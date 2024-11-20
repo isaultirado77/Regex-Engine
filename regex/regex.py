@@ -23,20 +23,6 @@ def search(regex: str, text: str):
     return search(regex, text[1:])
 
 
-def find_flag(text: str, flag: str) -> list:
-    return list(filter(lambda i: text[i] == flag, range(len(text))))
-
-
-def dot(regex: str, string: str) -> bool:
-    indexes = find_flag(string, '.')
-
-    for index in indexes:
-        if string[index] != regex[index]:
-            return False
-
-    return True
-
-
 def main():
     usrinput = read_input()
     regex = usrinput.split('|')[0]
