@@ -3,6 +3,9 @@ def read_input() -> str:
 
 
 def match(regex: str, string: str) -> bool:
+    if len(regex) != len(string):
+        return False
+
     if not regex:
         return True
     elif not string:
@@ -18,10 +21,8 @@ def find_flag(string: str, flag: str) -> list:
 
 
 def dot(regex: str, string: str) -> bool:
-    if len(regex) != len(string):
-        return False
-
     indexes = find_flag(string, '.')
+
     for index in indexes:
         if string[index] != regex[index]:
             return False
