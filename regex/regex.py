@@ -5,9 +5,7 @@ def read_input() -> str:
 def match(regex: str, string: str):
     if not regex:
         return True
-    elif not string:
-        return False
-    elif not regex[0] == string[0] and regex[0] != '.':
+    elif not string or regex[0] not in ('.', '', string[0]):
         return False
     return match(regex[1:], string[1:])
 
