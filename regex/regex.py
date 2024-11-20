@@ -5,15 +5,22 @@ def read_input() -> str:
 def match(regex: str, text: str):
     if not regex:
         return True
-    elif not text:
-        return False
     elif not regex[0] == text[0] and regex[0] != '.':
         return False
     return match(regex[1:], text[1:])
 
 
 def search(regex: str, text: str):
-    pass
+    if not regex and not text:
+        return True
+
+    if not text:
+        return False
+
+    elif match(regex, text):
+        return True
+
+    return search(regex, text[1:])
 
 
 def find_flag(text: str, flag: str) -> list:
@@ -34,7 +41,7 @@ def main():
     usrinput = read_input()
     regex = usrinput.split('|')[0]
     text = usrinput.split('|')[-1]
-    print(match(regex, text))
+    print(search(regex, text))
 
 
 if __name__ == '__main__':
