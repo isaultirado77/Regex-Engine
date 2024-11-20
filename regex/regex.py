@@ -2,18 +2,14 @@ def read_input() -> str:
     return input()
 
 
-def match(regex: str, string: str) -> bool:
-    if len(regex) != len(string):
-        return False
-
+def match(regex: str, string: str):
     if not regex:
         return True
     elif not string:
-        return True if not regex else False
-    elif '.' in regex:
-        return dot(regex, string)
-    else:
-        return regex == string
+        return False
+    elif not regex[0] == string[0] and regex[0] != '.':
+        return False
+    return match(regex[1:], string[1:])
 
 
 def find_flag(string: str, flag: str) -> list:
