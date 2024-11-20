@@ -8,9 +8,25 @@ def match(regex: str, string: str) -> bool:
     elif not string:
         return True if not regex else False
     elif '.' in regex:
-        return False
+        return False  # Need to implement
     else:
         return False
+
+
+def find_flag(string: str, flag: str) -> list:
+    lst = list()
+    for i in range(len(string)):
+        if string[i] == flag:
+            lst.append(i)
+    return lst
+
+
+def dot(regex: str, string: str):
+    if len(regex) != len(string):
+        return None
+
+    indexes = find_flag(string, '.')
+    pass
 
 
 def main():
@@ -20,4 +36,4 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    s = '....cok.'
