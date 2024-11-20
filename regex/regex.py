@@ -8,32 +8,33 @@ def match(regex: str, string: str) -> bool:
     elif not string:
         return True if not regex else False
     elif '.' in regex:
-        return False  # Need to implement
+        return dot(regex, string)
     else:
-        return False
+        return regex == string
 
 
 def find_flag(string: str, flag: str) -> list:
-    lst = list()
-    for i in range(len(string)):
-        if string[i] == flag:
-            lst.append(i)
-    return lst
+    return list(filter(lambda i: string[i] == flag, range(len(string))))
 
 
-def dot(regex: str, string: str):
+def dot(regex: str, string: str) -> bool:
     if len(regex) != len(string):
-        return None
+        return False
 
     indexes = find_flag(string, '.')
-    pass
+    for index in indexes:
+        if string[index] != regex[index]:
+            return False
+
+    return True
 
 
 def main():
-    regex = read_input()
-    string = read_input()
+    usrinput = read_input()
+    regex = usrinput.split('|')[0]
+    string = usrinput.split('|')[-1]
     print(match(regex, string))
 
 
 if __name__ == '__main__':
-    s = '....cok.'
+    main()
