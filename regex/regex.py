@@ -38,8 +38,8 @@ def main():
 
 
 def testing():
-    reg = '^apple$'
-    txt = 'tasty apple'
+    reg = ''
+    txt = ''
     print(search(reg, txt))
 
 
