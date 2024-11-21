@@ -2,6 +2,18 @@ def read_input() -> str:
     return input()
 
 
+def question_mark():
+    pass
+
+
+def asterisk():
+    pass
+
+
+def plus():
+    pass
+
+
 def match(regex: str, text: str):
     if not regex:
         return True
