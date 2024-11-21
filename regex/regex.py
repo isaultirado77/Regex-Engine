@@ -2,7 +2,10 @@ def read_input() -> str:
     return input()
 
 
-def question_mark():
+def question_mark(regex: str, text: str):
+    # Preceding char occurs zero times
+    if regex[0] != text[0]:
+        return search(regex[2:], text)
     pass
 
 
@@ -18,11 +21,12 @@ def match(regex: str, text: str):
     if not regex:
         return True
 
-    elif regex == '$' and not text:
+    if regex == '$' and not text:
         return True
 
-    elif not regex[0] == text[0] and regex[0] != '.':
+    if not regex[0] == text[0] and regex[0] != '.':
         return False
+
     return match(regex[1:], text[1:])
 
 
@@ -30,13 +34,13 @@ def search(regex: str, text: str):
     if not regex:
         return True
 
-    if regex[0] == '^':
-        return match(regex[1:], text)
-
     if not text:
         return False
 
-    elif match(regex, text):
+    if regex[0] == '^':
+        return match(regex[1:], text)
+
+    if match(regex, text):
         return True
 
     return search(regex, text[1:])
@@ -50,10 +54,10 @@ def main():
 
 
 def testing():
-    reg = ''
-    txt = ''
+    reg = 'colou?r'
+    txt = 'color'
     print(search(reg, txt))
 
 
 if __name__ == '__main__':
-    main()
+    testing()
