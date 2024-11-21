@@ -14,6 +14,9 @@ def search(regex: str, text: str):
     if not regex and not text:
         return True
 
+    if regex[0] == '^':
+        return match(regex[1:], text)
+
     if not text:
         return False
 
@@ -30,5 +33,11 @@ def main():
     print(search(regex, text))
 
 
+def testing():
+    reg = '^le'
+    txt = 'apple'
+    print(search(reg, txt))
+
+
 if __name__ == '__main__':
-    main()
+    testing()
