@@ -5,13 +5,17 @@ def read_input() -> str:
 def match(regex: str, text: str):
     if not regex:
         return True
+
+    elif regex == '$' and not text:
+        return True
+
     elif not regex[0] == text[0] and regex[0] != '.':
         return False
     return match(regex[1:], text[1:])
 
 
 def search(regex: str, text: str):
-    if not regex and not text:
+    if not regex:
         return True
 
     if regex[0] == '^':
@@ -34,10 +38,10 @@ def main():
 
 
 def testing():
-    reg = '^le'
-    txt = 'apple'
+    reg = '^apple$'
+    txt = 'tasty apple'
     print(search(reg, txt))
 
 
 if __name__ == '__main__':
-    testing()
+    main()
