@@ -14,8 +14,10 @@ def question_mark(regex: str, text: str):
         return match(regex[2:], text)
 
 
-def asterisk():
-    pass
+def asterisk(regex: str, text: str):
+    if len(regex) < 2:
+        return False
+
 
 
 def plus():
@@ -39,8 +41,13 @@ def match(regex: str, text: str):
     if regex[0] == text[0] or regex[0] == '.':  # Direct match or wildcard
         return match(regex[1:], text[1:])
 
+    # Question-mark operator
     if len(regex) > 1 and regex[1] == '?':
         return question_mark(regex, text)
+
+    # Asterisk operator
+    if None:
+        pass
 
 
 def search(regex: str, text: str):
