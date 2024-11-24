@@ -19,7 +19,6 @@ def asterisk(regex: str, text: str):
         return False
 
 
-
 def plus():
     pass
 
