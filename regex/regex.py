@@ -17,6 +17,10 @@ def question_mark(regex: str, text: str):
 def asterisk(regex: str, text: str):
     if len(regex) < 2:
         return False
+    if regex[0] == text[0]:
+        return match(regex[2:], text[1:]) or asterisk(regex, text[1:])
+    else:
+        return match(regex[2:], text)
 
 
 def plus():
@@ -45,8 +49,8 @@ def match(regex: str, text: str):
         return question_mark(regex, text)
 
     # Asterisk operator
-    if None:
-        pass
+    if len(regex) > 1 and regex[1] == '*':
+        return asterisk(regex, text)
 
 
 def search(regex: str, text: str):
@@ -66,7 +70,7 @@ def main():
 
 
 def testing():
-    reg = 'colou?r'
+    reg = 'colou*r'
     txt = 'color'
     print(search(reg, txt))
 
