@@ -27,11 +27,18 @@ def plus(regex: str, text: str):
     if len(regex) > 2:
         return False
 
+    if regex[0] == text[0]:
+        return match(regex[2:], text[1:]) or plus(regex, text[1:])
+
+    else:
+        return False
+
 
 def match(regex: str, text: str):
-    # Base case: if the regex is empty, we check if the text is empty as well
+    print(regex, text)
+    # Base case: if the regex is empty, return True
     if not regex:
-        return not text
+        return True
 
     if regex[0] == '^':  # Match the start of the string
         return match(regex[1:], text)
@@ -57,6 +64,9 @@ def match(regex: str, text: str):
     if len(regex) > 1 and regex[1] == '+':
         return plus(regex, text)
 
+    # No match
+    return False
+
 
 def search(regex: str, text: str):
     if not text:  # Base case: if text is empty, no match is possible
@@ -75,8 +85,8 @@ def main():
 
 
 def testing():
-    reg = 'colou*r'
-    txt = 'color'
+    reg = '^apple$'
+    txt = 'tasty apple'
     print(search(reg, txt))
 
 
