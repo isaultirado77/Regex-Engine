@@ -35,7 +35,6 @@ def plus(regex: str, text: str):
 
 
 def match(regex: str, text: str):
-    print(regex, text)
     # Base case: if the regex is empty, return True
     if not regex:
         return True
@@ -91,4 +90,4 @@ def testing():
 
 
 if __name__ == '__main__':
-    testing()
+    main()
