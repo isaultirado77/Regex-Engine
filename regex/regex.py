@@ -23,8 +23,9 @@ def asterisk(regex: str, text: str):
         return match(regex[2:], text)
 
 
-def plus():
-    pass
+def plus(regex: str, text: str):
+    if len(regex) > 2:
+        return False
 
 
 def match(regex: str, text: str):
@@ -51,6 +52,10 @@ def match(regex: str, text: str):
     # Asterisk operator
     if len(regex) > 1 and regex[1] == '*':
         return asterisk(regex, text)
+
+    # Plus operator
+    if len(regex) > 1 and regex[1] == '+':
+        return plus(regex, text)
 
 
 def search(regex: str, text: str):
